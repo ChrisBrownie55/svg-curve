@@ -1,0 +1,74 @@
+html {
+  font-size: 10px;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+circle[draggable] {
+  cursor: pointer;
+}
+toggle-button {
+  display: table;
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+  border-radius: 1.8rem;
+  -webkit-border-radius: 1.8rem;
+  -moz-border-radius: 1.8rem;
+}
+toggle-button input {
+  display: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+toggle-button input + label {
+  width: 4rem;
+  height: 1.8rem;
+  display: block;
+  background-color: #faaec4;
+  position: relative;
+  border-radius: 1.8rem;
+  -webkit-border-radius: 1.8rem;
+  -moz-border-radius: 1.8rem;
+  transition: background-color 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+toggle-button input + label::after {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  position: absolute;
+  left: -0.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #f9638d;
+  transition: background-color 0.2s ease-in-out, left 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, left 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, left 0.2s ease-in-out;
+  cursor: pointer;
+}
+toggle-button input:checked + label {
+  background-color: #a2e2f1;
+}
+toggle-button input:checked + label::after {
+  background-color: #3d91a5;
+  left: calc(100% - 2rem);
+}
+toggle-button input:checked ~ p::after {
+  content: attr(checked);
+}
+toggle-button p {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  font-family: Arial sans-serif;
+}

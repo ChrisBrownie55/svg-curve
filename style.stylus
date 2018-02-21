@@ -1,0 +1,85 @@
+red = #f9638d
+blue = #3d91a5
+lightred = #FAAEC4
+lightblue = #A2E2F1
+
+appearance(n)
+  appearance n
+  -webkit-appearance n
+  -moz-appearance n
+
+border-radius(n)
+  border-radius n
+  -webkit-border-radius n
+  -moz-border-radius n
+
+square(n)
+  width n 
+  height n 
+
+centerY()
+  top 50%
+  transform translateY(-50%)
+
+transition(b, properties)
+  result = unquote(join(' '+b+', ', properties)+' '+b)
+  transition result
+  -webkit-transition result
+  -moz-transition result
+
+default-transition(properties)
+  transition('0.2s ease-in-out', properties)
+
+html
+  font-size 10px
+
+body
+  display flex
+  justify-content center
+  align-items: center
+  margin 0
+  padding 0
+
+circle[draggable]
+  cursor: pointer
+
+toggle-button
+  display table
+  position absolute
+  top 2rem
+  left 3rem
+  border-radius 1.8rem
+  input
+    display none
+    appearance none
+    & + label
+      width 4rem
+      height 1.8rem
+      display block
+      background-color lightred
+      position relative
+      border-radius 1.8rem
+      default-transition background-color
+      cursor pointer
+      &::after
+        content ''
+        square 2rem
+        border-radius 100%
+        position absolute
+        left -0.1rem
+        centerY()
+        background-color red
+        default-transition(background-color left)
+        cursor pointer
+    &:checked + label
+      background-color lightblue
+      &::after
+        background-color blue
+        left calc( 100% - 2rem )
+    &:checked ~ p
+      &::after
+        content: attr(checked)
+  p
+    font-size 1.25rem
+    text-transform uppercase
+    font-family Arial sans-serif
